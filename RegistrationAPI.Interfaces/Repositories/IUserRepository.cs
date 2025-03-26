@@ -9,5 +9,6 @@ namespace RegistrationAPI.Interfaces.Repositories
         Task<User> AddAsync(User user);
         Task<User> UpdateAsync(User user);
         Task<bool> DeleteAsync(int id);
+        Task<User> MigrateUserAsync(User user);
     }
 }

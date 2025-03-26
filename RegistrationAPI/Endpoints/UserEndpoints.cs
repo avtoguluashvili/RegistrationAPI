@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using RegistrationAPI.Dto;
+﻿using Microsoft.AspNetCore.Mvc;
+using RegistrationAPI.Dto.User;
 using RegistrationAPI.Interfaces.Services;
 
 namespace RegistrationAPI.Endpoints
@@ -10,26 +9,25 @@ namespace RegistrationAPI.Endpoints
         public static void MapEndpoints(WebApplication app)
         {
             // GET all users
-            app.MapGet("/api/users", async (IUserService userService) =>
+            app.MapGet("/api/users", async ([FromServices] IUserService userService) =>
             {
                 var users = await userService.GetAllUsersAsync();
                 return Results.Ok(users);
-            }).WithName("GetAllUsers");
+            }).WithName("User_GetAllUsers");
 
             // GET user by id
-            app.MapGet("/api/users/{id:int}", async (int id, IUserService userService) =>
+            app.MapGet("/api/users/{id:int}", async (int id, [FromServices] IUserService userService) =>
             {
                 var user = await userService.GetUserByIdAsync(id);
                 return user is not null
                     ? Results.Ok(user)
                     : Results.NotFound(new { Message = $"User with id {id} does not exist." });
-            }).WithName("GetUserById");
+            }).WithName("User_GetUserById");
 
             // POST create user
-            app.MapPost("/api/users", async (CreateUserDto userDto, IUserService userService) =>
+            app.MapPost("/api/users", async ([FromBody] CreateUserDto userDto, [FromServices] IUserService userService) =>
             {
-                if (userDto == null ||
-                    string.IsNullOrWhiteSpace(userDto.FirstName) ||
+                if (string.IsNullOrWhiteSpace(userDto.FirstName) ||
                     string.IsNullOrWhiteSpace(userDto.LastName) ||
                     string.IsNullOrWhiteSpace(userDto.Email))
                 {
@@ -37,10 +35,10 @@ namespace RegistrationAPI.Endpoints
                 }
                 var createdUser = await userService.CreateUserAsync(userDto);
                 return Results.Created($"/api/users/{createdUser.Id}", createdUser);
-            }).WithName("CreateUser");
+            }).WithName("User_CreateUser");
 
             // PUT update user
-            app.MapPut("/api/users/{id:int}", async (int id, UpdateUserDto userDto, IUserService userService) =>
+            app.MapPut("/api/users/{id:int}", async (int id, [FromBody] UpdateUserDto userDto, [FromServices] IUserService userService) =>
             {
                 if (userDto == null)
                 {
@@ -50,16 +48,16 @@ namespace RegistrationAPI.Endpoints
                 return updatedUser is not null
                     ? Results.Ok(updatedUser)
                     : Results.NotFound(new { Message = $"User with id {id} does not exist." });
-            }).WithName("UpdateUser");
+            }).WithName("User_UpdateUser");
 
             // DELETE user
-            app.MapDelete("/api/users/{id:int}", async (int id, IUserService userService) =>
+            app.MapDelete("/api/users/{id:int}", async (int id, [FromServices] IUserService userService) =>
             {
                 var result = await userService.DeleteUserAsync(id);
                 return !result
                     ? Results.NotFound(new { Message = $"User with id {id} does not exist." })
                     : Results.NoContent();
-            }).WithName("DeleteUser");
+            }).WithName("User_DeleteUser");
         }
     }
 }

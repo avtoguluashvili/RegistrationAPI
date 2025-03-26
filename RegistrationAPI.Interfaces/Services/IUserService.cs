@@ -1,4 +1,4 @@
-﻿using RegistrationAPI.Dto;
+﻿using RegistrationAPI.Dto.User;
 
 namespace RegistrationAPI.Interfaces.Services
 {
@@ -9,5 +9,10 @@ namespace RegistrationAPI.Interfaces.Services
         Task<UserDto> CreateUserAsync(CreateUserDto userDto);
         Task<UserDto> UpdateUserAsync(int id, UpdateUserDto userDto);
         Task<bool> DeleteUserAsync(int id);
+        Task<UserDto?> MigrateUserAsync(MigrateUserDto migrateUserDto);
+        Task<UserDto?> UpdateUserStatusAsync(UpdateUserStatusDto statusDto);
+        Task<IEnumerable<UserDto>> BulkCreateUsersAsync(BulkCreateUserDto bulkDto);
+        Task<IEnumerable<UserDto>> SearchUsersAsync(UserFilterDto filter);
+
     }
 }

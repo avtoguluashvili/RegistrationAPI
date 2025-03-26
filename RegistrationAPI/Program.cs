@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using RegistrationAPI.Endpoints;
+using RegistrationAPI.Endpoints.UserManagement;
 using RegistrationAPI.Interfaces.Repositories;
 using RegistrationAPI.Interfaces.Services;
 using RegistrationAPI.MappingProfiles;
+using RegistrationAPI.Middlewares;
 using RegistrationAPI.Repository.Data;
 using RegistrationAPI.Repository.Repositories;
 using RegistrationAPI.Services;
@@ -26,6 +28,8 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
+app.UseMiddleware<GlobalExceptionMiddleware>();
+
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
@@ -40,4 +44,8 @@ app.Run();
 void RegisterEndpoints(WebApplication appInstance)
 {
     UserEndpoints.MapEndpoints(appInstance);
+    UserSearchEndpoints.MapEndpoints(appInstance);
+    UserStatusEndpoints.MapEndpoints(appInstance);
+    UserMigrationEndpoints.MapEndpoints(appInstance);
+    UserBulkEndpoints.MapEndpoints(appInstance);
 }

@@ -48,5 +48,13 @@ namespace RegistrationAPI.Repository.Repositories
             await _context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<User> MigrateUserAsync(User user)
+        {
+            user.IsMigrated = true;
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+            return user;
+        }
     }
 }

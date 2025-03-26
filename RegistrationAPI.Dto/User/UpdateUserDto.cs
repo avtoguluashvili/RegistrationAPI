@@ -1,4 +1,4 @@
-﻿namespace RegistrationAPI.Dto
+﻿namespace RegistrationAPI.Dto.User
 {
     public class UpdateUserDto
     {

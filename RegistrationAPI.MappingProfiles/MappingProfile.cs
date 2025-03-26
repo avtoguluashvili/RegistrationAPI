@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using RegistrationAPI.Domain;
-using RegistrationAPI.Dto;
+using RegistrationAPI.Dto.User;
 
 namespace RegistrationAPI.MappingProfiles
 {
