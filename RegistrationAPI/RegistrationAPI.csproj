@@ -26,6 +26,7 @@
     <ProjectReference Include="..\RegistrationAPI.MappingProfiles\RegistrationAPI.MappingProfiles.csproj" />
     <ProjectReference Include="..\RegistrationAPI.Repository\RegistrationAPI.Repository.csproj" />
     <ProjectReference Include="..\RegistrationAPI.Services\RegistrationAPI.Services.csproj" />
+    <ProjectReference Include="..\RegistrationAPI.Shared\RegistrationAPI.Shared.csproj" />
   </ItemGroup>
 
 </Project>

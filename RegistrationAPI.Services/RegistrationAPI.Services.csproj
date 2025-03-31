@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RegistrationAPI.Interfaces\RegistrationAPI.Interfaces.csproj" />
+    <ProjectReference Include="..\RegistrationAPI.Shared\RegistrationAPI.Shared.csproj" />
   </ItemGroup>
 
 </Project>

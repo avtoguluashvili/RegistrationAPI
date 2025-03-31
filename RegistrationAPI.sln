@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35913.81 d17.13
+VisualStudioVersion = 17.13.35913.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationAPI", "RegistrationAPI\RegistrationAPI.csproj", "{3A7023A0-5E82-4B40-88AC-7A885A613891}"
 EndProject
@@ -16,6 +16,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationAPI.Dto", "RegistrationAPI.Dto\RegistrationAPI.Dto.csproj", "{2C4543E7-08B6-4056-AB69-8DBE52E9FAD7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationAPI.Interfaces", "RegistrationAPI.Interfaces\RegistrationAPI.Interfaces.csproj", "{3955F69F-F1AE-4722-A06C-0BA6D35E2F29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationAPI.Shared", "RegistrationAPI.Shared\RegistrationAPI.Shared.csproj", "{454C7D7D-C143-47A1-83DE-08D71C3915FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solutions", "Solutions", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +58,10 @@ Global
 		{3955F69F-F1AE-4722-A06C-0BA6D35E2F29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3955F69F-F1AE-4722-A06C-0BA6D35E2F29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3955F69F-F1AE-4722-A06C-0BA6D35E2F29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{454C7D7D-C143-47A1-83DE-08D71C3915FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{454C7D7D-C143-47A1-83DE-08D71C3915FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{454C7D7D-C143-47A1-83DE-08D71C3915FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{454C7D7D-C143-47A1-83DE-08D71C3915FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

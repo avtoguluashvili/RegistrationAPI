@@ -1,7 +1,6 @@
-﻿namespace RegistrationAPI.Dto.User
+﻿namespace RegistrationAPI.Dto.User;
+
+public class BulkCreateUserDto
 {
-    public class BulkCreateUserDto
-    {
-        public IEnumerable<CreateUserDto> Users { get; set; } = new List<CreateUserDto>();
-    }
+    public IEnumerable<CreateUserDto> Users { get; set; } = new List<CreateUserDto>();
 }

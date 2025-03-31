@@ -1,16 +1,17 @@
 ﻿using AutoMapper;
-using RegistrationAPI.Domain;
 using RegistrationAPI.Dto.User;
+using User = RegistrationAPI.Models.User;
 
-namespace RegistrationAPI
+namespace RegistrationAPI;
+
+public class MappingProfile : Profile
 {
-    public class MappingProfile : Profile
+    public MappingProfile()
     {
-        public MappingProfile()
-        {
-            CreateMap<User, UserDto>().ReverseMap();
-            CreateMap<User, CreateUserDto>().ReverseMap();
-            CreateMap<User, UpdateUserDto>().ReverseMap();
-        }
+        CreateMap<User, UserDto>().ReverseMap();
+        CreateMap<User, CreateUserDto>().ReverseMap()
+            .ForMember(dest => dest.Status, opt => opt.Ignore());
+        CreateMap<User, UpdateUserDto>().ReverseMap()
+            .ForMember(dest => dest.Status, opt => opt.Ignore());
     }
 }

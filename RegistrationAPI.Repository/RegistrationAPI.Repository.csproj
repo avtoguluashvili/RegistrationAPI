@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RegistrationAPI.Domain\RegistrationAPI.Domain.csproj" />
     <ProjectReference Include="..\RegistrationAPI.Interfaces\RegistrationAPI.Interfaces.csproj" />
   </ItemGroup>
 

@@ -1,8 +1,7 @@
-﻿namespace RegistrationAPI.Dto.User
+﻿namespace RegistrationAPI.Dto.User;
+
+public class UpdateUserDto
 {
-    public class UpdateUserDto
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-    }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
 }

@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RegistrationAPI.Dto.User
+namespace RegistrationAPI.Dto.User;
+
+public class MigrateUserDto
 {
-    public class MigrateUserDto
-    {
-        public int Id { get; set; }
-        public string LegacySystemId { get; set; } = null!;
-    }
+    public int Id { get; set; }
+    public string LegacySystemId { get; set; } = null!;
 }

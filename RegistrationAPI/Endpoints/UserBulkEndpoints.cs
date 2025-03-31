@@ -1,21 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RegistrationAPI.Dto.User;
-using RegistrationAPI.Interfaces.Services;
+using RegistrationAPI.Interfaces.Services.User;
+using RegistrationAPI.Shared;
 
-namespace RegistrationAPI.Endpoints
+namespace RegistrationAPI.Endpoints;
+
+public static class UserBulkEndpoints
 {
-    public static class UserBulkEndpoints
+    public static void MapEndpoints(WebApplication app)
     {
-        public static void MapEndpoints(WebApplication app)
-        {
-            app.MapPost("/api/users/bulk", async ([FromBody] BulkCreateUserDto bulkDto, [FromServices] IUserService userService) =>
+        app.MapPost(EndpointConfig.BulkUserUrl,
+            async ([FromBody] BulkCreateUserDto bulkDto, [FromServices] IUserService userService) =>
             {
-                if (bulkDto == null || !bulkDto.Users.Any())
-                    return Results.BadRequest(new { Message = "No users provided for bulk import." });
-
                 var result = await userService.BulkCreateUsersAsync(bulkDto);
-                return Results.Created("/api/users/bulk", result);
-            }).WithName("User_BulkCreateUsers");
-        }
+                return Results.Created(EndpointConfig.BulkUserUrl,
+                    new { Message = EndpointConfig.BulkCreateSuccessMessage, Users = result });
+            }).WithName(EndpointConfig.BulkCreateUsersName);
     }
 }

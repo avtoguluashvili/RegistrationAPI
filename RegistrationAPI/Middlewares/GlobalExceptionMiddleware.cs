@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+﻿using System.Net;
 
 namespace RegistrationAPI.Middlewares
 {
@@ -13,17 +13,9 @@ namespace RegistrationAPI.Middlewares
             catch (Exception ex)
             {
                 logger.LogError(ex, "An unhandled exception occurred.");
-
-                context.Response.StatusCode = 500;
+                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 context.Response.ContentType = "application/json";
-
-                var errorResponse = new
-                {
-                    Error = "An unexpected error occurred. Please try again later."
-                };
-
-                var errorJson = JsonSerializer.Serialize(errorResponse);
-                await context.Response.WriteAsync(errorJson);
+                await context.Response.WriteAsync($"{{ \"Error\": \"{ex.Message}\" }}");
             }
         }
     }
